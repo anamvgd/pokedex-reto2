@@ -19,6 +19,7 @@ public class PokemonView extends RecyclerView.ViewHolder {
     private ConstraintLayout root;
     private TextView name;
     private ImageView image;
+    private String trainer;
 
     private Activity activity;
 
@@ -33,6 +34,7 @@ public class PokemonView extends RecyclerView.ViewHolder {
                 v -> {
 
                     Intent intent = new Intent(activity ,PokemonActivity.class);
+                    intent.putExtra("trainer", trainer);
                     activity.startActivityForResult(intent, 20);
 
                 });
@@ -53,5 +55,9 @@ public class PokemonView extends RecyclerView.ViewHolder {
 
     public void setActivity(Activity activity){
         this.activity = activity;
+    }
+
+    public void setTrainer(String trainer){
+        this.trainer = trainer;
     }
 }

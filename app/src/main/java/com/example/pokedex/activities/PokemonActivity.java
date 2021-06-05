@@ -24,6 +24,8 @@ public class PokemonActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton button_back;
     private Button button_liberar;
 
+    private String trainer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +41,12 @@ public class PokemonActivity extends AppCompatActivity implements View.OnClickLi
         button_back = findViewById(R.id.button_back);
         button_liberar = findViewById(R.id.button_liberar);
 
+        trainer = getIntent().getExtras().getString("trainer");
+
         button_back.setOnClickListener(
                 v -> {
                     Intent intent = new Intent(this, ListActivity.class);
+                    intent.putExtra("trainer", trainer);
                     startActivity(intent);
                 });
 

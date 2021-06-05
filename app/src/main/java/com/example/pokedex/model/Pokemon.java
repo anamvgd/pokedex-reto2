@@ -1,5 +1,7 @@
 package com.example.pokedex.model;
 
+import java.util.Date;
+
 public class Pokemon {
 
     private String name;
@@ -9,7 +11,7 @@ public class Pokemon {
     private String attack;
     private String speed;
     private String life;
-
+    private Date catchDate;
 
     public Pokemon(){
 
@@ -23,6 +25,7 @@ public class Pokemon {
         this.attack = attack;
         this.speed = speed;
         this.life = life;
+        this.catchDate = new Date();
     }
 
     public String getName() {
@@ -79,5 +82,13 @@ public class Pokemon {
 
     public void setLife(String life) {
         this.life = life;
+    }
+
+    public Date getCatchDate(){
+        return catchDate;
+    }
+
+    public void setCatchDate(Date catchDate){
+        this.catchDate = catchDate;
     }
 }

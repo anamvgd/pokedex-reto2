@@ -9,33 +9,41 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.pokedex.R;
 import com.example.pokedex.model.Pokemon;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 
 public class PokemonAdapter extends RecyclerView.Adapter<PokemonView> {
 
     private ArrayList<Pokemon> pokemons;
     private Activity activity;
+    private String trainer;
 
-    public PokemonAdapter(Activity activity){
+    public PokemonAdapter(Activity activity, String trainer){
         pokemons = new ArrayList<>();
         this.activity = activity;
-
-        Pokemon pikachu = new Pokemon();
-        pikachu.setName("Pikachu");
-
-        Pokemon charmander = new Pokemon();
-        charmander.setName("charmander");
-
-        pokemons.add(pikachu);
-        pokemons.add(charmander);
+        this.trainer = trainer;
     }
 
     public void addPokemon(Pokemon pokemon){
         pokemons.add(pokemon);
-        this.notifyDataSetChanged();
+        pokemons.sort(new Comparator<Pokemon>() {
+            @Override
+            public int compare(Pokemon p1, Pokemon p2) {
+                if (p1.getCatchDate().after(p2.getCatchDate())) {
+                    return 1;
+                } else if (p2.getCatchDate().after(p1.getCatchDate())) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        });
     }
 
     @NonNull
@@ -54,8 +62,10 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonView> {
     @Override
     public void onBindViewHolder(PokemonView holder, int position) {
         holder.setActivity(activity);
+        holder.setTrainer(trainer);
         holder.getName().setText(pokemons.get(position).getName());
         //holder.getImage().setImageBitmap(pokemons.get(position).getImage());
+        Glide.with(activity).load(pokemons.get(position).getImage()).fitCenter().into(holder.getImage());
 
     }
 
