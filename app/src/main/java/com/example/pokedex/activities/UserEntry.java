@@ -1,8 +1,10 @@
-package com.example.pokedex;
+package com.example.pokedex.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.pokedex.R;
 
 public class UserEntry extends AppCompatActivity {
 
