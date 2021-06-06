@@ -9,9 +9,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.pokedex.R;
+import com.example.pokedex.connection.Constants;
+import com.example.pokedex.connection.HTTPSWebUtilDomi;
 
 public class PokemonActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -64,9 +67,32 @@ public class PokemonActivity extends AppCompatActivity implements View.OnClickLi
         button_liberar.setOnClickListener(
                 v -> {
                     System.out.println("liberado");
+                    setFreePokemon();
                 }
         );
 
+    }
+
+    public void setFreePokemon(){
+        //System.out.println(Constants.BASEURL+ "trainers/" + trainer + "/" + name + ".json");
+
+        HTTPSWebUtilDomi https = new HTTPSWebUtilDomi();
+
+        new Thread(
+                ()->{
+                    https.DELETErequest(Constants.BASEURL+ "trainers/" + trainer + "/" + pokeName.getText().toString() + ".json");
+                }
+        ).start();
+
+        Toast.makeText(getBaseContext(), "Tu pokemon ha sido liberado...", Toast.LENGTH_SHORT).show();
+
+        setResult(RESULT_OK, null);
+
+        Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("trainer", trainer);
+        startActivity(intent);
+
+        finish();
     }
 
     @Override
