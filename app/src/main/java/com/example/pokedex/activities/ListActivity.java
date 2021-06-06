@@ -94,7 +94,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
         new Thread(
                 () -> {
-                    String response = https.GETrequest(Constants.APIURL + editText_atrapar.getText().toString());
+                    String response = https.GETrequest(Constants.APIURL + editText_atrapar.getText().toString().toLowerCase());
 
                     try {
                         JSONObject pokemonJson = new JSONObject(response);

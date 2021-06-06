@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondito"
     tools:context=".activities.ListActivity">
 
     <ImageButton
@@ -19,12 +20,17 @@
 
     <EditText
         android:id="@+id/editText_atrapar"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="327dp"
+        android:layout_height="47dp"
         android:layout_marginTop="64dp"
+        android:background="#A9FFFFFF"
+        android:drawableLeft="@drawable/ic_action_poke"
         android:ems="10"
+        android:fontFamily="@font/bubblegum_sans"
         android:hint="Atrapa un pokemon"
         android:inputType="textPersonName"
+        android:textColor="#8D000000"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +40,10 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Atrapar"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_atrapar" />
@@ -43,19 +52,22 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Mis pokemon"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_atrapar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pokemon_list"
-        android:layout_width="320dp"
-        android:layout_height="350dp"
+        android:layout_width="323dp"
+        android:layout_height="365dp"
         android:layout_marginTop="9dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,12 +75,14 @@
 
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="291dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="323dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:background="#8AFFFFFF"
         app:iconifiedByDefault="false"
-        app:queryHint="Busca pokemon"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:queryHint="Busca pokemon" />
 </androidx.constraintlayout.widget.ConstraintLayout>
