@@ -102,6 +102,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonView> {
         holder.getName().setText(pokemons.get(position).getName());
         //holder.getImage().setImageBitmap(pokemons.get(position).getImage());
         Glide.with(activity).load(pokemons.get(position).getImage()).fitCenter().into(holder.getImage());
+        holder.setPokemon(pokemons.get(position));
 
     }
 

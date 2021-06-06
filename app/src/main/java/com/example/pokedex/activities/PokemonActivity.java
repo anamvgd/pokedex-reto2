@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.pokedex.R;
 
 public class PokemonActivity extends AppCompatActivity implements View.OnClickListener{
@@ -41,7 +42,17 @@ public class PokemonActivity extends AppCompatActivity implements View.OnClickLi
         button_back = findViewById(R.id.button_back);
         button_liberar = findViewById(R.id.button_liberar);
 
+        pokeName.setText(getIntent().getExtras().getString("name"));
+        pokeType.setText(getIntent().getExtras().getString("type"));
+        pokeDefense.setText(getIntent().getExtras().getString("defense"));
+        pokeAttack.setText(getIntent().getExtras().getString("attack"));
+        pokeSpeed.setText(getIntent().getExtras().getString("speed"));
+        pokeLife.setText(getIntent().getExtras().getString("hp"));
+
         trainer = getIntent().getExtras().getString("trainer");
+
+        String url = getIntent().getExtras().getString("img");
+        Glide.with(this).load(url).fitCenter().into(pokeImage);
 
         button_back.setOnClickListener(
                 v -> {

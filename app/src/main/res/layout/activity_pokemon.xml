@@ -11,7 +11,6 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="80dp"
-        android:foreground="@drawable/outline_catching_pokemon_black_24dp"
         android:foregroundGravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
