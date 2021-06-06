@@ -74,7 +74,6 @@ public class PokemonActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void setFreePokemon(){
-        //System.out.println(Constants.BASEURL+ "trainers/" + trainer + "/" + name + ".json");
 
         HTTPSWebUtilDomi https = new HTTPSWebUtilDomi();
 
@@ -84,7 +83,7 @@ public class PokemonActivity extends AppCompatActivity implements View.OnClickLi
                 }
         ).start();
 
-        Toast.makeText(getBaseContext(), "Tu pokemon ha sido liberado...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Tu pokemon ha sido liberado", Toast.LENGTH_SHORT).show();
 
         setResult(RESULT_OK, null);
 
