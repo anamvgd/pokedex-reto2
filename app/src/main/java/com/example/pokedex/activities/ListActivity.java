@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.pokedex.R;
@@ -27,15 +28,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ListActivity extends AppCompatActivity implements View.OnClickListener {
+public class ListActivity extends AppCompatActivity implements View.OnClickListener, SearchView.OnQueryTextListener {
 
     private RecyclerView pokemon_list;
     private LinearLayoutManager layoutManager;
     private PokemonAdapter adapter;
 
     private EditText editText_atrapar;
+    private SearchView searchView;
     private EditText editText_buscar;
     private Button button_atrapar;
     private ImageButton button_buscar;
@@ -50,12 +53,12 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
         pokemon_list = findViewById(R.id.pokemon_list);
         editText_atrapar = findViewById(R.id.editText_atrapar);
-        editText_buscar = findViewById(R.id.editText_buscar);
+        searchView = findViewById(R.id.searchView);
         button_atrapar = findViewById(R.id.button_atrapar);
-        button_buscar = findViewById(R.id.button_search);
         button_back = findViewById(R.id.button_back2);
         trainer = getIntent().getExtras().getString("trainer");
 
+        searchView.setOnQueryTextListener(this);
         button_atrapar.setOnClickListener(this);
         button_back.setOnClickListener(
                 v -> {
@@ -169,5 +172,26 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
         ).start();
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        ArrayList<Pokemon> original = adapter.getOriginalPokemons();
+        ArrayList<Pokemon> pokemon = adapter.getPokemons();
+
+        adapter.filterSearch(newText);
+        adapter = new PokemonAdapter(this, trainer);
+        adapter.setPokemons(original, pokemon);
+        pokemon_list.setAdapter(adapter);
+
+        for(int i=0; i<adapter.getPokemons().size(); i++){
+            System.out.println(adapter.getPokemons().get(i).getName());
+        }
+        return false;
     }
 }

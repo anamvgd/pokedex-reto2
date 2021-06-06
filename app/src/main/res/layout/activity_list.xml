@@ -7,17 +7,6 @@
     tools:context=".activities.ListActivity">
 
     <ImageButton
-        android:id="@+id/button_search"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="16dp"
-        android:background="#00FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/editText_buscar"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:srcCompat="@drawable/outline_search_black_24dp" />
-
-    <ImageButton
         android:id="@+id/button_back2"
         android:layout_width="24dp"
         android:layout_height="24dp"
@@ -63,24 +52,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_atrapar" />
 
-    <EditText
-        android:id="@+id/editText_buscar"
-        android:layout_width="240dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Buscar"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pokemon_list"
         android:layout_width="320dp"
         android:layout_height="350dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="9dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_buscar" />
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="291dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="16dp"
+        app:iconifiedByDefault="false"
+        app:queryHint="Busca pokemon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
